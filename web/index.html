@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英语六级 · 翻译知识点</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --text-muted: #94a3b8;
+    --accent: #2563eb;
+    --accent-light: #3b82f6;
+    --gold: #3b82f6;
+    --gold-light: #dbeafe;
+    --gold-pale: #eff6ff;
+    --sidebar-bg: #f8fafc;
+    --sidebar-border: #e2e8f0;
+    --sidebar-hover: #e0f2fe;
+    --shadow: rgba(30,58,138,0.04);
+    --shadow-hover: rgba(30,58,138,0.08);
+    --radius: 12px;
+    --transition: 0.2s ease;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    min-height: 100vh;
+    font-size: 15px;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ===== Layout ===== */
+  .page-wrapper { display: flex; min-height: 100vh; }
+
+  /* ===== Sidebar ===== */
+  .sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid var(--sidebar-border);
+    flex-shrink: 0;
+  }
+  .sidebar-header .logo {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+  .sidebar-header .logo span {
+    color: var(--gold);
+  }
+  .sidebar-header .subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+    padding: 12px 0;
+    flex: 1;
+  }
+  .sidebar-menu li { margin: 1px 0; }
+  .sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px 10px 24px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+    position: relative;
+  }
+  .sidebar-menu a:hover {
+    background: var(--sidebar-hover);
+    color: var(--text);
+  }
+  .sidebar-menu a.active {
+    background: var(--gold-pale);
+    color: var(--accent);
+    border-left-color: var(--gold);
+    font-weight: 600;
+  }
+  .sidebar-menu a .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .sidebar-menu a.active .num {
+    background: linear-gradient(135deg, var(--gold), var(--accent-light));
+    color: #fff;
+  }
+
+  .sidebar-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--sidebar-border);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* ===== Mobile Toggle ===== */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 14px; left: 14px;
+    z-index: 200;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--sidebar-border);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text);
+    box-shadow: 0 2px 12px var(--shadow-hover);
+  }
+  .overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 90;
+    backdrop-filter: blur(2px);
+  }
+  .overlay.show { display: block; }
+
+  /* ===== Main Content ===== */
+  .main-content {
+    margin-left: 280px;
+    flex: 1;
+    min-width: 0;
+    background: var(--bg);
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, #0c1929 0%, #0f172a 35%, #1e3a5f 65%, #1e40af 100%);
+    padding: 80px 32px 64px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 700px 450px at 15% 40%, rgba(59,130,246,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 400px at 85% 15%, rgba(37,99,235,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 350px at 50% 85%, rgba(30,58,138,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block; padding: 7px 20px; border-radius: 20px;
+    background: rgba(59,130,246,0.18); color: var(--gold);
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 24px; border: 1px solid rgba(59,130,246,0.25);
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800;
+    color: #fff; letter-spacing: 3px; margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p { color: rgba(255,255,255,0.65); font-size: 15px; max-width: 460px; margin: 0 auto 28px; line-height: 1.7; }
+  .hero-meta { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+  .hero-meta-item { color: rgba(255,255,255,0.45); font-size: 13px; }
+  .hero-meta-item strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+
+  /* Content Area */
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 32px 60px; }
+
+  .note-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 8px var(--shadow);
+    transition: var(--transition);
+    opacity: 0; transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+  .note-card:hover { box-shadow: 0 6px 24px var(--shadow-hover); transform: translateY(-1px); }
+  .note-card:nth-child(1) { animation-delay: 0.03s; }
+  .note-card:nth-child(2) { animation-delay: 0.06s; }
+  .note-card:nth-child(3) { animation-delay: 0.09s; }
+  .note-card:nth-child(4) { animation-delay: 0.12s; }
+  .note-card:nth-child(5) { animation-delay: 0.15s; }
+  .note-card:nth-child(6) { animation-delay: 0.18s; }
+  .note-card:nth-child(7) { animation-delay: 0.21s; }
+  .note-card:nth-child(8) { animation-delay: 0.24s; }
+  .note-card:nth-child(9) { animation-delay: 0.27s; }
+  .note-card:nth-child(10) { animation-delay: 0.30s; }
+  .note-card:nth-child(11) { animation-delay: 0.33s; }
+  .note-card:nth-child(12) { animation-delay: 0.36s; }
+  .note-card:nth-child(13) { animation-delay: 0.39s; }
+  .note-card:nth-child(14) { animation-delay: 0.42s; }
+  .note-card:nth-child(15) { animation-delay: 0.45s; }
+  .note-card:nth-child(16) { animation-delay: 0.48s; }
+  .note-card:nth-child(17) { animation-delay: 0.51s; }
+  .note-card:nth-child(18) { animation-delay: 0.54s; }
+  .note-card:nth-child(19) { animation-delay: 0.57s; }
+  .note-card:nth-child(19) { animation-delay: 0.57s; }
+
+  .note-card-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .note-card-number {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--gold), #2563eb);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(37,99,235,0.3);
+  }
+  .note-card-title { font-size: 18px; font-weight: 700; color: var(--text); }
+  .note-card-title.vocab-heading {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 20px;
+  }
+
+  .note-content { color: #333; }
+  .note-content h3 {
+    font-size: 14px; font-weight: 600; color: var(--accent);
+    margin: 20px 0 10px; padding-left: 10px;
+    border-left: 3px solid var(--gold);
+    letter-spacing: 0.3px;
+  }
+  .note-content p { margin-bottom: 10px; font-size: 14.5px; line-height: 1.8; }
+  .note-content ul { margin: 8px 0 12px 18px; }
+  .note-content li { margin-bottom: 6px; font-size: 14px; line-height: 1.7; }
+  .note-content .example-box {
+    background: var(--gold-pale);
+    border-radius: 10px;
+    padding: 14px 18px; margin: 10px 0 16px;
+    border-left: 3px solid var(--gold);
+    transition: var(--transition);
+  }
+  .note-content .example-box:hover {
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .note-content .example-box .cn { color: var(--text); font-weight: 500; margin-bottom: 6px; font-size: 14px; }
+  .note-content .example-box .en { color: var(--text-light); font-style: italic; font-size: 13.5px; line-height: 1.7; }
+  .note-content .highlight { color: var(--accent); font-weight: 600; }
+  .note-content .tip { color: var(--gold); font-weight: 500; background: var(--gold-pale); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  .note-content .sub-type {
+    font-weight: 600; color: #3a3a3a; margin: 16px 0 10px;
+    display: block; font-size: 14.5px;
+    padding: 8px 12px; background: #f5f3f0;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+  }
+  .note-content .notice {
+    background: linear-gradient(135deg, #fff9f0, #fff5e6);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    border: 1px solid var(--gold-light);
+  }
+  .note-content .notice-title {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 6px 24px;
+    margin: 10px 0 16px;
+  }
+  .vocab-item {
+    display: flex;
+    gap: 8px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--sidebar-border);
+  }
+  .vocab-cn { color: var(--text); font-weight: 500; white-space: nowrap; }
+  .vocab-en { color: var(--text-light); font-style: italic; }
+  #s19 .sub-type {
+    color: var(--accent);
+    background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+    border-left: 4px solid #2563eb;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .footer {
+    text-align: center; padding: 40px 24px;
+    color: var(--text-muted); font-size: 13px;
+    border-top: 1px solid var(--sidebar-border);
+    background: var(--sidebar-bg);
+  }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 2px 0 20px rgba(0,0,0,0.12); }
+    .sidebar.open { transform: translateX(0); }
+    .menu-toggle { display: flex; }
+    .main-content { margin-left: 0; }
+    .hero { padding: 60px 20px 48px; }
+    .container { padding: 24px 16px 48px; }
+    .note-card { padding: 22px 18px; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar { width: 240px; }
+    .main-content { margin-left: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">☰</button>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<div class="page-wrapper">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">翻译<span>知识点</span></div>
+      <div class="subtitle">CET-6 备考笔记 · 19节</div>
+    </div>
+    <ul class="sidebar-menu" id="sidebarMenu">
+      <li><a href="#s1" onclick="closeMobile()"><span class="num">1</span>"是"字结构</a></li>
+      <li><a href="#s2" onclick="closeMobile()"><span class="num">2</span>"的"字结构</a></li>
+      <li><a href="#s3" onclick="closeMobile()"><span class="num">3</span>"有"字结构</a></li>
+      <li><a href="#s4" onclick="closeMobile()"><span class="num">4</span>"随着"结构</a></li>
+      <li><a href="#s5" onclick="closeMobile()"><span class="num">5</span>"之一"结构</a></li>
+      <li><a href="#s6" onclick="closeMobile()"><span class="num">6</span>句中无动词处理</a></li>
+      <li><a href="#s7" onclick="closeMobile()"><span class="num">7</span>句中无主语处理</a></li>
+      <li><a href="#s8" onclick="closeMobile()"><span class="num">8</span>长名词处理</a></li>
+      <li><a href="#s9" onclick="closeMobile()"><span class="num">9</span>两大必考时态</a></li>
+      <li><a href="#s10" onclick="closeMobile()"><span class="num">10</span>隐藏的被动关系</a></li>
+      <li><a href="#s11" onclick="closeMobile()"><span class="num">11</span>双动词处理</a></li>
+      <li><a href="#s12" onclick="closeMobile()"><span class="num">12</span>定语从句的应用</a></li>
+      <li><a href="#s13" onclick="closeMobile()"><span class="num">13</span>语序原则</a></li>
+      <li><a href="#s14" onclick="closeMobile()"><span class="num">14</span>三大动词要提后</a></li>
+      <li><a href="#s15" onclick="closeMobile()"><span class="num">15</span>如何对句子无效信息进行删减</a></li>
+      <li><a href="#s16" onclick="closeMobile()"><span class="num">16</span>如何写对难度较高的单词或词组</a></li>
+      <li><a href="#s17" onclick="closeMobile()"><span class="num">17</span>关于数字的翻译</a></li>
+      <li><a href="#s18" onclick="closeMobile()"><span class="num">18</span>关于各种时间朝代的翻译</a></li>
+      <li><a href="#s19" onclick="closeMobile()"><span class="num">19</span>翻译常考词汇</a></li>
+    </ul>
+    <div class="sidebar-footer">祝考试顺利 🎯</div>
+  </aside>
+
+  <div class="main-content">
+
+    <header class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">CET-6 · 翻译</div>
+        <h1>翻译知识<span>笔记</span></h1>
+        <p>整理自 CET-6 翻译知识点，涵盖常见句型、高频词汇与翻译技巧</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">📄 共 <strong>19</strong> 节</div>
+          <div class="hero-meta-item">📅 整理于 <strong>2025</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <!-- 1. 是字结构 -->
+      <div class="note-card" id="s1">
+        <div class="note-card-header">
+          <div class="note-card-number">1</div>
+          <div class="note-card-title">"是"字结构</div>
+        </div>
+        <div class="note-content">
+          <p>引出主语身份地位，用 <span class="highlight">As + n</span> 或 <span class="highlight">Being + n</span> 翻译，一般置于句子开头。</p>
+          <p><strong>条件：</strong>句子必须有<span class="highlight">两个动词</span>，才可以使用 As + n 或 Being + n；但有时会特殊处理，即一个句子只用"是"字，其后的句子有一个动词。这种情况下，可以合并两句，这两句必须要求具有<span class="highlight">相同的主语</span>。</p>
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">1. 中国是文明古国，拥有悠久历史。</div>
+            <div class="en">China is a civilized ancient country and has a long history.<br>As a civilized ancient country, China has a long history.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 爆竹(firecrackers)是中国传统文化中的重要元素之一。它在中国有悠久的历史。</div>
+            <div class="en">Firecrackers are one of the important elements in traditional Chinese culture. They have a long history in China.<br>As/Being one of the important elements in traditional Chinese culture, firecrackers have a longstanding history in China.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 合并条件：这两句话的主语一致才可以合并。</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 重庆是一座山城，备受游客喜爱。</div>
+            <div class="en">As/Being a mountain city, Chongqing is well-liked by tourists.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 我是一名大学生，主修人文学科。</div>
+            <div class="en">As a college student, I major in humanities.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 的字结构 -->
+      <div class="note-card" id="s2">
+        <div class="note-card-header">
+          <div class="note-card-number">2</div>
+          <div class="note-card-title">"的"字结构</div>
+        </div>
+        <div class="note-content">
+          <p><span class="highlight">"的"字后面一定是名词</span>，不是名词的要转换成名词。</p>
+          <span class="sub-type">类型一（名词1 + 的 + 名词2）→ 名词2 of 名词1</span>
+          <div class="example-box">
+            <div class="cn">1. 中国文化的一个重要元素。中国放在其他名词前用 Chinese / N of China</div>
+            <div class="en">An important element of Chinese culture.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 环保意识的增强。</div>
+            <div class="en">Improvement of environmental awareness.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 爆竹的使用。</div>
+            <div class="en">The use of firecrackers.</div>
+          </div>
+          <span class="sub-type">类型二（形容词 + 的 + 名词）→ 直接用形容词 + N</span>
+          <div class="example-box">
+            <div class="cn">1. 悠久的历史</div>
+            <div class="en">A longstanding history</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 灿烂美丽的文化 — 如果有2个形容词修饰同一个名词，才能用逗号连接</div>
+            <div class="en">A splendid, gorgeous culture</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 高度发达的产业</div>
+            <div class="en">A highly developed industry</div>
+          </div>
+          <span class="sub-type">类型三（动词 + 的 + 名词）→ 1用定语从句，冠词 which/who/that；2注意动词形式</span>
+          <div class="example-box">
+            <div class="cn">1. 受人们喜爱的小说人物 — be + Ved</div>
+            <div class="en">Novel characters that/who are well-liked by people.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 获得财富的小男孩</div>
+            <div class="en">A boy who gains fortune</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 被父母批评的孩子</div>
+            <div class="en">kids who/that are scolded by their parents</div>
+          </div>
+          <span class="sub-type">类型四（有 + 的 + 名词）→ 名词 with</span>
+          <div class="example-box">
+            <div class="cn">1. 有花园的房子</div>
+            <div class="en">A house with a garden.（更好！）/ A house which/that has a garden.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 对婚姻有偏见的人们</div>
+            <div class="en">People with prejudice against marriage.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 有字结构 -->
+      <div class="note-card" id="s3">
+        <div class="note-card-header">
+          <div class="note-card-number">3</div>
+          <div class="note-card-title">"有"字结构</div>
+        </div>
+        <div class="note-content">
+          <span class="sub-type">类型一（主语 + 有）→ 主语 have / enjoy / boast / possess</span>
+          <div class="example-box">
+            <div class="cn">1. 中国有14亿人口。</div>
+            <div class="en">China has <span class="highlight">a population of</span> 1.4 billion.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 唐代诗人有许多著作。</div>
+            <div class="en">Tang poets had many masterpieces.</div>
+          </div>
+          <span class="sub-type">类型二（在句子的开头，并且"有"前无主语）→ There be（注意时态 + 后面名词的单复数）</span>
+          <div class="example-box">
+            <div class="cn">1. 在美国，有高度发达的芯片技术。</div>
+            <div class="en">In America, there is a highly developed chip technology.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 2008年有一场地震。过去时态 — 时间地点词一般不做主语，地点可以做主语</div>
+            <div class="en">There was an earthquake in 2008.</div>
+          </div>
+          <span class="sub-type">类型三（句子，有）→ with</span>
+          <div class="example-box">
+            <div class="cn">1. 他是一名著名的主持人，有着很多粉丝。</div>
+            <div class="en">He is a famed host, with many fans.<br>He is a famed host, who has many fans.<br>As / Being a famed host, he has many fans.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 中国十分重视环境保护，有许多相关的政策。</div>
+            <div class="en">China <span class="highlight">pays extra attention to</span> environmental protection, with many relevant policies.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 随着结构 -->
+      <div class="note-card" id="s4">
+        <div class="note-card-header">
+          <div class="note-card-number">4</div>
+          <div class="note-card-title">"随着"结构</div>
+        </div>
+        <div class="note-content">
+          <p>随着 + 名词/名词词组 → <span class="highlight">with</span> 接名词/名词词组（是否有"的"字结构）；或者 <span class="highlight">Following / In the wake of</span>；<span class="highlight">As</span> 接句子（有主语 + 动词）。</p>
+          <span class="sub-type">类型一 With — "的"串联，"的"字后面必须是名词</span>
+          <div class="example-box">
+            <div class="cn">1. 随着环保意识的增强</div>
+            <div class="en">With the improvement of environmental awareness</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 随着人们兴趣的增加</div>
+            <div class="en">With the growth of / <span class="highlight">in</span> people's interest.<br><span class="tip">of 严格意义上不规范，增加/减少/上升/下降用 in</span></div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 随着收入的减少</div>
+            <div class="en">With the reduction of income.</div>
+          </div>
+          <span class="sub-type">类型二 As — 谁做某事</span>
+          <div class="example-box">
+            <div class="cn">1. 随着人们对中国传统文化越来越感兴趣</div>
+            <div class="en">As people <span class="highlight">develop increasing / growing interest in</span> traditional Chinese culture.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 随着当地政府开始重视人们的生活质量（串联"的"字结构）</div>
+            <div class="en">As the local government begins to <span class="highlight">pay extra attention to</span> the life quality of people.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 之一结构 -->
+      <div class="note-card" id="s5">
+        <div class="note-card-header">
+          <div class="note-card-number">5</div>
+          <div class="note-card-title">"之一"结构</div>
+        </div>
+        <div class="note-content">
+          <p><span class="highlight">one of / among</span></p>
+          <p><strong>注意：</strong>（1）优先翻译原则：看到之一先翻译之一；（2）之一后面的名词要变成复数。</p>
+          <div class="example-box">
+            <div class="cn">1. 重庆大学是众多高等院校之一。主语和动词优先与任何成分之前。</div>
+            <div class="en">CQU is one of numerous colleges (专科类) and universities (四年制本科) / higher learning institutes.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 山东省中国众多省份之一。地名翻译：1只大写一次首字母；2拼音中间不空格。</div>
+            <div class="en">Shandong is one of many provinces in China.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 国画是中国文化艺术种类之一。</div>
+            <div class="en">Traditional Chinese painting is among the artistic varieties of Chinese culture / varieties of Chinese culture and arts.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 中国传统文化中的重要元素之一。名词短语串联"的"字结构，"的"字后面是主干，前面是修饰，所以先翻译重要元素。</div>
+            <div class="en">One of / Among the important elements of traditional Chinese culture.</div>
+          </div>
+          <h3>"许多、大量"用哪些词汇</h3>
+          <ul>
+            <li>rich many</li>
+            <li>numerous / a large number of + 可数名词 / a large amount of + 不可数名词（面包/水）</li>
+            <li>a host of / a wealth of</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. 句中无动词 -->
+      <div class="note-card" id="s6">
+        <div class="note-card-header">
+          <div class="note-card-number">6</div>
+          <div class="note-card-title">句中无动词处理方法</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">⚠️ 注意</div>
+            <ul>
+              <li>英语句子主语和动词必须同时存在。如果中文句没能体现动词，必须在英文翻译中加动词，如"有"。</li>
+              <li>"有"的英文表达：① have(has)；② <span class="highlight">be home to</span>（主语必须是地点、国家、地区；禁止主语是人/普通事物）</li>
+              <li>中文与英文表达顺序不同：① 中文：名词 + 形容词；② 英文：形容词 + 名词</li>
+            </ul>
+          </div>
+          <div class="example-box">
+            <div class="cn">1. 中国 幅员辽阔，人口众多。</div>
+            <div class="en">China has / is home to a vast territory and a large population.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 海南 雨水丰富，阳光充足，生物多样性。</div>
+            <div class="en">Hainan has / is home to rich rainfall, ample sunshine and varied species.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 这部电影 粉丝很多，口碑很好。</div>
+            <div class="en">The movie has many fans and a good reputation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. 句中无主语 -->
+      <div class="note-card" id="s7">
+        <div class="note-card-header">
+          <div class="note-card-number">7</div>
+          <div class="note-card-title">句中无主语的处理方法</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 英语句子主语和动词必须同时存在。如果中文句没能体现动词，必须在英文翻译中加主语，共3种方法。</p>
+            <p><strong>(2)</strong> 3种加主语的方法。</p>
+            <ul>
+              <li><strong>万能方法，加人们。</strong>如果加"人们"，使句子意思发生扭曲和改变，或者觉得别扭，则舍弃。</li>
+              <li><strong>根据上下文，自己写一个合适的主语，如这。</strong></li>
+              <li><strong>变成被动。</strong>be + Ved</li>
+            </ul>
+            <p><strong>(3)</strong> 主语放在哪里？ <span class="highlight">主语（在前）+ 动词</span>。一般句子结构（词性角度）：名词（主语）+ 动词 + 名词（宾语）</p>
+            <p><strong>(4)</strong> 什么可以做句子主语？只有代词（he / it / this / we / you）和名词才可以作主语！<span class="highlight">不可以用时间词和地点词做主语。</span></p>
+            <p><strong>(5)</strong> 中式英语和英文本土表达区别。中式英语更复杂和繁琐。英文本土表达则更简短。</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">人们认为，通过这么做，（这）可以驱散厄运，带来好运吉祥。</div>
+            <div class="en">People believe that this can disperse bad luck and bring good luck and auspiciousness by doing so.<br>People believe that bad luck can be dispersed and good luck can be brought.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">战后改变了世界格局。战后是时间词，应该放在后面，不是主语。</div>
+            <div class="en">The picture was changed after war.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 延申：picture 可以表示格局。We must bear a larger picture in mind.</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">通过政府引导和社会参与，建立更多的养老机构。（真题）</div>
+            <div class="en">More 1) old-folk homes / 2) retirement homes / 3) old-age support institutes are established through the government guidance and social participation.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 1) 略显不尊重；2) 正式。1、2 均更简洁，更英文本土化。3) 政府工作报告，中式英语。</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">灯笼内部点燃蜡烛。容易出错！灯笼内部是时间地点词！</div>
+            <div class="en">Candles are lit / light inside the lantern.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 延申：地道地表达灯火通明，热闹非凡用 well-lit。如 a well-lit street，a well-lit district。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. 长名词 -->
+      <div class="note-card" id="s8">
+        <div class="note-card-header">
+          <div class="note-card-number">8</div>
+          <div class="note-card-title">长名词的处理方法</div>
+        </div>
+        <div class="note-content">
+          <p><strong>什么是长名词？</strong> 由2个及以上的名词组成的一个名词词组。</p>
+          <p><strong>如何处理？</strong></p>
+          <ul>
+            <li>第一步：将长名词分割成单个的名词，保证切分合理，意思通顺即可。</li>
+            <li>第二步：<span class="highlight">从后往前翻译</span>，中间用 of 连接。</li>
+          </ul>
+          <p>例：六朝古都金陵南京……从后往前翻译英文，所以要将中文前面的信息放在英文翻译的后面。</p>
+          <p><strong>为何出现长名词现象？</strong> 中英文表达习惯、文化不同，通常中文重要信息在后，英文重要信息在前。</p>
+          <h3>命名示例</h3>
+          <div class="example-box">
+            <div class="cn">1. 农业生产活动</div>
+            <div class="en">The production activities of agriculture.（生产活动是定语）不能拆开</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 经济文化社会 发展</div>
+            <div class="en">The development of economy, culture and society.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">禁止！The development of economy of culture of society. 因为经济文化社会属于并列关系，是平等的，列在一起较好，而 of 体现从属关系。</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 社会实践活动</div>
+            <div class="en">Activities of social practice.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 中华传统文化的历史</div>
+            <div class="en">The history of traditional Chinese culture.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 中国传统绘画 历史 十分悠久</div>
+            <div class="en">The history of traditional Chinese painting is longstanding.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">5. 中华传统绘画（主语）历史十分悠久（名词短语）</div>
+            <div class="en">Traditional Chinese painting has a longstanding history.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. 两大必考时态 -->
+      <div class="note-card" id="s9">
+        <div class="note-card-header">
+          <div class="note-card-number">9</div>
+          <div class="note-card-title">两大必考时态</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 四六级翻译中两种时态比较重要，必考。分别是<span class="highlight">一般过去时态和现在完成时态</span>。</p>
+            <p><strong>(2)</strong> <span class="highlight">一般过去时</span>的标志词：出现具体过去时间，唐朝，宋朝，2007年。公式为：<span class="highlight">did</span>，did 为动词的过去式。</p>
+            <p><strong>(3)</strong> <span class="highlight">现在完成时</span>的标志词：一直，已经，时间 + 来，在过去的时间 + 里。公式为：<span class="highlight">have / has + done</span>，have / has 做助动词，表示已经，done 为过去分词。</p>
+            <p><strong>(4)</strong> 动词时态，"时"是指时间，包括现在、过去、将来、过去将来；"态"是指状态，包括一般态、进行态、完成态、完成进行态。</p>
+            <ul>
+              <li><strong>一般过去时态：</strong>发生在过去的事，通常表示完全发生在过去的事情，现在已经不那样了。</li>
+              <li><strong>现在完成时态：</strong>动作发生在过去，可能完成了，也可能还没完成，重要的是其结果对现在造成了直接的影响。</li>
+              <li><strong>过去时和现在完成时区别：</strong>过去时动作已经结束，现在完成时动作一直持续到现在。</li>
+            </ul>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">1. 唐代，经济繁荣，人们生活幸福，进出口产业发达。过去时态一定得选择用一般过去时。串联句中无动词方法，加有，使用 there be 句型，同时考虑动词做时态变化。Be 动词变为 was/were，实义动词 + ed 变成 did 形式。</div>
+            <div class="en">In the Tang Dynasty, there was prosperous economy, happy / rich / satisfactory lives and developed import and export industries.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 1999年，世界经历了巨大变化。表示变化词汇：transform / change / alter / shift（转变或者某人轮换早晚班）</div>
+            <div class="en">In 1999, the world underwent the transformation.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 在古代，人们崇尚尊师重道。把崇尚想象成尊重和拥护。尊和重，只翻译尊重一个词即可。</div>
+            <div class="en">In ancient times, people upheld the respect for teachers and education / teaching（教诲）.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 他已经被说服去洗碗了。较难：现在完成时 + 被动。公式为：have / has been done</div>
+            <div class="en">He has been talked into doing dishes.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">5. 中国一直践行绿色发展的方针。uphold 指践行，维持，拥护。遇到难以翻译的词汇找近义词，而非同义词。方针转换为道路。</div>
+            <div class="en">China has upheld the path of green development.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">6. 自2000年以来，中国驶入经济发展快车道。Since + 时间点；For + 时间段。化繁为简。</div>
+            <div class="en">Since 2000, China has undergone rapid economic growth.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">7. 在过去20年里，他饱经沧桑，阅人无数，深谙人生之道。此句为较难句子。训练化繁为简能力。</div>
+            <div class="en">In the last / past two decades, he has experienced / undergone rise and fall, known / dealt with many people and appreciated / had an insight into the truth of life.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. 隐藏的被动关系 -->
+      <div class="note-card" id="s10">
+        <div class="note-card-header">
+          <div class="note-card-number">10</div>
+          <div class="note-card-title">隐藏的被动关系</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1) 被动语态：</strong>主语和谓语是被动的关系，主语是谓语的动作承受者。被动语态的标志词包含“被”“受”“遭”，结构为 <span class="highlight">be + Ved</span>（过去分词）。如果考察的较难时候，被动的标志词不会出现，以隐藏形式出现在句子中。有些句子不似表面那般简单，要自主判断！</p>
+            <p><strong>(2) 判断依据有两点：</strong>第一，明白四六级会考察被动这一考点，有意识培养寻找和撰写被动语态的习惯。第二，遇到每一个句子，勾画主语和动词，花费时间，通过这个句子的逻辑，询问自己并判断这一句子究竟是主动还是被动。</p>
+            <p><strong>(3) 强调词 do + 动词原型表示一定要/尽快。</strong>例如：Do come on in. 赶快进来吧！Do tell me. 尽快告诉我吧！I do like it. 我真的喜欢它。He does like you.</p>
+            <p><strong>(4)</strong> 中文英文表达习惯不同。中文更习惯将人作为主体，英语为表示客观性，习惯将客观事物当作主语。</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">1. 铁观音一年四季均可采摘。铁观音不可以主动采摘自己！</div>
+            <div class="en">Tieguanyin can be picked / collected throughout a / the year.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 粮食一般在春天种植，秋天收获，冬天储存。粮食可以主动地自己做这些动作么？不可以！</div>
+            <div class="en">Grains are usually planted in spring, collected in autumn and stored in winter.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 你的行程确定后，一定要告诉我。行程不可以自己主动确定自己！</div>
+            <div class="en">After your schedule is established / set / fixed, do tell me.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 新规则制定后，大家一定要遵守。新规则不可以自己主动制定自己！</div>
+            <div class="en">After new rules are rolled out, do obey.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. 双动词如何处理 -->
+      <div class="note-card" id="s11">
+        <div class="note-card-header">
+          <div class="note-card-number">11</div>
+          <div class="note-card-title">双动词如何处理</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 一句话里只能有一个谓语，针对一个句子出现两个动词的情况，处理方法为三种：<span class="highlight">用 and 连接（有时态约束），用非谓语动词来写，用非限定性定语从句。</span></p>
+            <p><strong>(2) 非谓语动词：（主语 + V1 , V2）</strong></p>
+            <ul>
+              <li>常用 <span class="highlight">V-ing</span> 表主动，<span class="highlight">V-ed</span> 表示被动，to do 此处用的少。</li>
+              <li>确定哪个动词变非谓语动词，通常是<strong>动词2</strong>变非谓语动词，看主语是否能发出动词2这一动作，如果可以发出用 V-ing，如果不能发出则用 V-ed。</li>
+              <li>动词2没有时态约束，在翻译中要么变成被动，要么变成主动。</li>
+              <li>非谓语动词表示否定用 <span class="highlight">not</span> 而非 don't。</li>
+            </ul>
+            <p><strong>(3) 非限定性定语从句：（主语人/物，who/which + V2）</strong></p>
+            <ul>
+              <li>确定谁变非限定性定语从句，通常是动词2变非限定性定语从句。只有 <span class="highlight">which</span> 和 <span class="highlight">who</span> 两个连接词，看主语是人还是物品，物用 which，人用 who。</li>
+              <li>有时态约束。</li>
+            </ul>
+            <p><strong>(4)</strong> 哪个更适合自己，用哪个。我选择非谓语动词！</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">1. 他飞越了大半个地球，去到了梦想中的地方。</div>
+            <div class="en"><strong>用 and 连接来写：</strong><br>He traveled so much by air and got to the place that he wanted / dreamed about.<br><span class="tip">延申</span>：the delicious food that I want / dream about；the house that I want / dream about<br><br><strong>用非谓语动词来写：</strong><br>He traveled so much by air, getting to the place that he dreamed about.<br><br><strong>用非限定性定语从句来写：</strong><br>He traveled so much by air, who got to the place that he dreamed about.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2. 她接听了电话，变得十分沮丧。</div>
+            <div class="en">She answered the call and became extremely upset.<br>She answered the call, becoming extremely upset.<br>She answered the call, who became extremely upset.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3. 熊猫是十分可爱的动物，深受世界各地的人们喜爱。</div>
+            <div class="en">Pandas are extremely lovely animals and are deeply loved by people all over the world.<br>Pandas are extremely lovely animals, deeply loved by people all over the world.（“受”是被动语态的标志词，串联被动语态如何翻译）<br>Pandas are extremely lovely animals, which are deeply loved by people all over the world.（熊猫即使有生命也不是人，所以用 which 连接）</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">4. 他们跟你建立了深厚的感情，不希望你离开。hate 指不情愿，不希望。</div>
+            <div class="en">They have established a deep relationship with you and don't want you to leave.<br>They have established a deep relationship with you, not wanting you to leave.（非谓语表示否定用 not）<br>They have established a deep relationship with you, who don't want you to leave.（此处用 who 指的是 they）</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. 定语从句的应用 -->
+      <div class="note-card" id="s12">
+        <div class="note-card-header">
+          <div class="note-card-number">12</div>
+          <div class="note-card-title">定语从句的应用</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 定语从句概念：句子成分上是定语从句，从句充当定语，词性上是形容词性从句，用完整句子修饰名词，起到形容词的作用。<span class="highlight">结构为主句（有先行词）+ 关系词 + 从句</span>。主语是完整的，先行词指的是被修饰的名词。</p>
+            <p><strong>(2)</strong> 定语从句3种形式：</p>
+            <ul>
+              <li><strong>① 限定性定语从句：</strong>限定性定语从句没有逗号。</li>
+              <li><strong>② 非限定性定语从句：</strong>非限定性定语从句有逗号，可以划掉不翻译，不影响理解句子，只是对先行词进行补充说明，相当于插入语。</li>
+              <li><strong>③ 介词提前的定语从句：</strong>结构为名词 + 介词 + which/whom。指物的时候是"介词 + which"，指人的时候是"介词 + whom"。除此之外，介词 + 其他关系词，一律引导的是宾语从句。</li>
+            </ul>
+            <p><strong>(3)</strong> 四六级英语翻译一定会用上定语从句这一语法。如何应用？看考点。根据每个考点去选择不同的语法对应，无需去学习过多复杂的全部语法，只需要学会这个考点所对应的语法是哪一种或者哪两种。</p>
+            <p><strong>(4)</strong> 定语从句连接词，常见的有：that/which 指物的概念，who 指人的概念，when 指时间概念，where 指地点的概念。</p>
+          </div>
+
+          <span class="sub-type">类型一（相同的名词或者概念，上下句反复出现两次）N1 N2 用定语从句的连接词去替换N2，看相同的名词的概念的性质是什么，选择对应的连接词。</span>
+          <div class="example-box">
+            <div class="cn">我喜欢这枚闪闪发光的戒指 N1，它 N2 真的很漂亮。</div>
+            <div class="en">I like this shinning ring and it is really beautiful.<br>I like this shinning ring that/which is really beautiful.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">人总是不愿意遵守规则，规则最终也会被人们打破。</div>
+            <div class="en">People are reluctant to obey rules that / which will eventually be broken / are eventually broken by them / people.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">中国有很多艺术家，他们十分有才华。</div>
+            <div class="en">China is home to many / numerous artists, who are extremely talented.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 时间一般不做主语，地点可以做主语，地点词作主语，后面跟"有"字表达。可以选择 ① have(has) ② be home to（主语必须是地点、国家、地区；禁止主语是人/普通事物）</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">中国有很多艺术家，他们中的大部分有才华。</div>
+            <div class="en">China is home to many / numerous artists, most of whom are extremely talented.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 稍难考法。为体现大部分，将 most of 加在 who 前面，of 后面接宾语，但是定语从句连接词只能做，最好做主语，所以将 who 变成 whom 是更标准更规范的。</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">我喜欢很多书，大部分书都很便宜。</div>
+            <div class="en">I like numerous books, most of which are considerably inexpensive.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 为体现大部分，将 most of 加在 which 前面，一般用 most of which 而不是 most of that。which 做主格或者宾格都可以，只有 which 可以跟在介词后面。</p>
+          </div>
+          <div class="example-box">
+            <div class="cn">我有很多朋友，其中一些朋友愿意帮忙。Be ready to do 表示 ① 准备好去做 ② 乐意做，愿意做</div>
+            <div class="en">I have many friends, some of who/whom are ready.</div>
+          </div>
+
+          <span class="sub-type">类型二（"的"字前面出现动词，先翻译"的"字后面的信息，然后用定语从句完成"的"字的翻译）将定语从句当成形容词用，根据"的"字后面信息性质选择不同的连接词</span>
+          <div class="example-box">
+            <div class="cn">他从不吃他讨厌的食物。</div>
+            <div class="en">He never eats foods that he hates.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">Jacky 从来不听别人指出的缺点。化繁为简，不听等于忽略或者不重视。</div>
+            <div class="en">Jacky never pays attention to the shortcomings that other people point out.</div>
+          </div>
+
+          <span class="sub-type">类型三（句子，这……）翻译成句子，which + Vs。这用 which 连接，后面该写啥写啥</span>
+          <div class="example-box">
+            <div class="cn">你应该多锻炼，这对你来说很重要。</div>
+            <div class="en">You should exercise more, which is very important to you.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">凡人多舛误，为神能见宥，这是十分正确的。</div>
+            <div class="en">Man errs and divine forgives, which is highly true.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">中国坚持在保护环境中发展，在发展中保护环境，这获得了大多数国家的认可。</div>
+            <div class="en">China is committed to development in environmental protection and environmental protection in development, which gains recognition of / from most countries.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ be committed to 表示坚持做。strike a balance between A and B 表示取得平衡。翻译顺序：在……中/在……里属于时间地点词类，翻译中要放在后面。</p>
+            <div class="en" style="margin-top:6px;"><strong>高级表达：</strong>China is committed to striking a balance between environmental protection and development, which gains recognition from most countries.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. 语序原则 -->
+      <div class="note-card" id="s13">
+        <div class="note-card-header">
+          <div class="note-card-number">13</div>
+          <div class="note-card-title">语序原则</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 时间地点词一定往后放，分为具体地点和虚拟地点。虚拟地点词的标志有比如在……方面、在……领域、在……中/里，统一使用in。在时间地点词往后放的基础上，方式状语也要往后放。标志词有通过、使用、用，翻译为by + N/by + doing / through + N更好。</p>
+            <p><strong>(2)</strong> 主语翻译之后一定得翻译谓语动词。</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">中国古代的人们道德水平很高。串联句中无动词用法，加有。地点词往后放，形容词在名词前。</div>
+            <div class="en">People in ancient China had impressive / remarkable / considerable (程度形容词) ethic moralities.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">张军在大数据方面表现十分优秀。</div>
+            <div class="en">Zhangjun performs extremely well in big data.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">它在众多中小型企业中不算突出。</div>
+            <div class="en">It is average / common / not up too much in many small and medium enterprises.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">在中国，很多人在互联网上当键盘侠。</div>
+            <div class="en">Many people are keyboard warriors on the Internet in China.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">你可以通过互联网获得很多信息。</div>
+            <div class="en">You can get / obtain much information through the internet.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">科学家根据自然界的规律发明了很多科技。</div>
+            <div class="en">Scientist invented many technologies according to the laws of nature.</div>
+            <p style="margin-top:8px;font-size:13px;color:var(--accent)">⭐ 网友 4jm11 提出：自然规律应当用 laws。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. 三大动词要提后 -->
+      <div class="note-card" id="s14">
+        <div class="note-card-header">
+          <div class="note-card-number">14</div>
+          <div class="note-card-title">三大动词要提后</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> <span class="highlight">出现、发生、存在</span>三大动词要提后翻译，后面名词当主语，这一考法较为小众。根本原因是为了让句子有主语，同时注意让时间地点词最后。</p>
+            <p><strong>(2)</strong> 出现 appear / emerge；发生 happen / take place；存在 exist</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">宋代出现了火药爆竹。</div>
+            <div class="en">Gunpowder firecrackers <span class="highlight">emerged / appeared</span> in the Song Dynasty.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2030年发生了断网停电。</div>
+            <div class="en">Power outage will <span class="highlight">take place / happen</span> in 2030.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">这片区域存在很多资源。</div>
+            <div class="en">Many resources <span class="highlight">exist</span> in this region.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. 如何对句子无效信息进行删减 -->
+      <div class="note-card" id="s15">
+        <div class="note-card-header">
+          <div class="note-card-number">15</div>
+          <div class="note-card-title">如何对句子无效信息进行删减</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 何时对所翻译的句子信息进行删减？①觉得这个句子比较难，比较不好翻译②句子中某些重复出现的信息，可有可无的信息</p>
+            <p><strong>(2)</strong> 删减原则是删掉之后对句子意思无明显影响。翻译具体而不翻译概括。</p>
+            <p><strong>(3)</strong> 为什么要对句子信息进行删减？删掉无效信息，可以使句子信息变得更简单更地道。</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">中国的房价之所以一路飙升与购房观念息息相关。一路飙升简化为不断上涨的，处理成形容词，置于名词前。value 加S表示价值观/概念，不加S表示价值。</div>
+            <div class="en">The growing housing price in China is closely linked with the concept /values of house purchasing.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">一年四季的变化。</div>
+            <div class="en">The changes of a year</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">南京长江大桥是中国设计、采用国产材料建造的铁路、公路两用桥。六级真题。1隐藏被动2删除3拆开翻译</div>
+            <div class="cn">特点：所有信息堆在一块，信息密集。处理策略：拆开翻译，一分为二。被动Be used to = 主动serve to do</div>
+            <div class="en">Nanjing-Changjiang /Yangtze Bridge is designed by China and built with homegrown materials ./materials made in China.It can be used as the railway and highway as well.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">我们要彻底解决缺水、营养不良的难题。</div>
+            <div class="en">We must completely resolve water/finance shortage and <span class="highlight">malnutrition</span>.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">我们要坚持"人民至上"的方针。人民至上简化为将人民放在第一位。</div>
+            <div class="en">We must put our people in the first place.<br>We must stick to the faith of "people in the first place".</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">它们彼此之间相互关联。</div>
+            <div class="en">They are correlated.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">推行家庭养老和社会养老相结合的模式。</div>
+            <div class="en">We must/need to integrate household/family old-age support and social old-age.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">我们要坚持"人民至上"的方针。人民至上简化为将人民放在第一位。坚持和方针是固定表达，一般同时出现。</div>
+            <div class="en">We must put our people in the first place.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">它们彼此之间相互关联。</div>
+            <div class="en">They are correlated.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">推行家庭养老和社会养老相结合的模式。六级真题。</div>
+            <div class="en">We must/need to integrate household/family old-age support and social old-age .</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. 如何写对难度较高的单词或词组 -->
+      <div class="note-card" id="s16">
+        <div class="note-card-header">
+          <div class="note-card-number">16</div>
+          <div class="note-card-title">如何写对难度较高的单词或词组</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 句子中为陌生，难度较高的词汇，如何简化，如何翻译？</p>
+            <p><strong>(2)</strong> 找到难度较高的单词或者词组的近义词，再去找这些近义词的英文。近义词标准为简单，大白话。</p>
+            <p><strong>(3)</strong> 增加翻译方法：如何翻译 "有 + 名词 + 动作" 结构？删除 "有" 原因是有没有后面的动作重要</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">房子成为中国人有归属感的重要标志，并深入人心。简化为被普遍接受/认同。</div>
+            <div class="en">Houses become the important signal /symbol of sense of belonging for Chinese people and this is commonly accepted/recognized.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">中国桥梁建设的一个飞跃。简化为巨大进步，快速进步。</div>
+            <div class="en">A big achievement/advancement of Chinese bridge construction.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">中央电视台总部设有一条穿过大楼的专用通道。简化为有。内部穿过是through, 外部跨过是across.</div>
+            <div class="en">CCTV headquarter has a private /exclusive channel through the building.</div>
+            <div class="en">There is a private channel through the building in CCTV headquarter.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">夜间有狼钻进了羊圈 (sheepfold) 叼走了羊。简化为进入。简化为带走。</div>
+            <div class="en">A wolf got into the sheepfold and took away a sheep during the night.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. 关于数字的翻译 -->
+      <div class="note-card" id="s17">
+        <div class="note-card-header">
+          <div class="note-card-number">17</div>
+          <div class="note-card-title">关于数字的翻译</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> （百 hundred）（千 thousand）万 十万（百万 million）千万 亿（十亿 billion）</p>
+            <p><strong>(2)</strong> 数字是重点！从英文当中，数字从后面往前面数，满三位数在这前面打上一个逗号 如100,000,000</p>
+            <p><strong>(3)</strong> 即使百，千前面数字大于1，百和千也不加复数，除非thousands of，此时表达成百上千的或者表示数千</p>
+            <p><strong>(4)</strong> 数字大于1 将后面名词变成复数形式</p>
+            <p><strong>(5)</strong> 翻译没有的英文表达时候，应用千来翻译万，进行换算，这样更简便　<span class="highlight">注意好好进行数学计算！</span></p>
+            <p><strong>(6)</strong> 百万以下的数字可以直接用阿拉伯数字，百万以上最好用单位</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">300名游客</div>
+            <div class="en">300 /three hundred tourists</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">三千名游客</div>
+            <div class="en">3,000 /three thousand tourists.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">三万名游客</div>
+            <div class="en">30,000 /30 thousand tourists</div>
+            <div class="en">三万读法 thirty thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">三十万名游客</div>
+            <div class="en">300,000/300 thousand tourists</div>
+            <div class="en">三十万读法 three hundred thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">三十三万名游客</div>
+            <div class="en">330,000 / 330 thousand tourists</div>
+            <div class="en">三十三万读法 three hundred and thirty thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两百万名游客</div>
+            <div class="en">2 million tourists</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两千万名游客</div>
+            <div class="en">20 million tourists</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两千三百万名游客</div>
+            <div class="en">23 million tourists</div>
+            <div class="en">两千三百万读法 twenty three million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">1亿游客</div>
+            <div class="en">100 million tourists</div>
+            <div class="en">1亿读法 one hundred million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">55亿游客</div>
+            <div class="en">5.5 billion tourists</div>
+            <div class="en">55亿读法 five point five billion</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">你需要抽出你四分之三的时间</div>
+            <div class="en">You need to spare three quarters of your time.（quarter 表示四分之一）</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">给我一半的钱</div>
+            <div class="en">Give me the half of your money.</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">三十三万名游客</div>
+            <div class="en">330,000 / 330 thousands tourists</div>
+            <div class="en">三十三万读法 three hundred and (口语中可以省略and) thirty thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两百万名游客</div>
+            <div class="en">2 million (2,000,000 阿拉伯数字太长，不建议用)</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两千万名游客</div>
+            <div class="en">20 million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">两千三百万名游客</div>
+            <div class="en">23 million</div>
+            <div class="en">两千三百万读法 twenty three million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">1亿游客</div>
+            <div class="en">100 million</div>
+            <div class="en">1亿读法 one hundred million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">55亿游客</div>
+            <div class="en">5.5 billion</div>
+            <div class="en">55亿读法 five point five billion</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">你需要抽出你四分之三的时间 Quater 表示四分之一</div>
+            <div class="en">You need to spare three quaters of your time　四分之一 one quater</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">给我一半的钱</div>
+            <div class="en">Give me the half of your money</div>
+          </div>
+
+          <h3>练习</h3>
+          <div class="example-box">
+            <div class="cn">798, 000 读法 seven hundred and ninety-eight (连字符可有可无 and可有可无)</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">165, 000 读法 one hundred and sixty five thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">200,100 读法 2 hundred and one hundred</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">300716 读法 three hundred thousand seven hundred and sixteen</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">718,008 读法 seven hundred eighteen thousand and eight</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">100,000 读法 one million</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">1,718,000 读法 one million seven hundred and eighteen thousand</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">3,888,888 读法 three million eight hundred eight thousand eight hundred and eighty eight</div>
+          </div>
+        </div>
+      </div>
+      <!-- 18. 关于各种时间朝代的翻译 -->
+      <div class="note-card" id="s18">
+        <div class="note-card-header">
+          <div class="note-card-number">18</div>
+          <div class="note-card-title">关于各种时间朝代的翻译</div>
+        </div>
+        <div class="note-content">
+          <div class="notice">
+            <div class="notice-title">📌 注意</div>
+            <p><strong>(1)</strong> 基本格式为：<span class="highlight">the + 首字母大写</span>。定冠词 the 除非位于开头，否则不大写。</p>
+            <p><strong>(2)</strong> 凡是唐宋元明清，无论说的是时期还是时间，必须使用 <span class="highlight">Dynasty</span> 进行结尾，两个时期变复数 <span class="highlight">Dynasties</span>。其他时期或者时间可以使用 <span class="highlight">Period</span>。</p>
+            <p><strong>(3)</strong> 如何翻译朝代前出现"东南西北"？① 不可以且不允许写拼音翻译；② 应当写成这些单词的形容词性，在末尾加上 <span class="highlight">-ern</span> 后缀；③ 大写，如 <span class="highlight">the Southern Song Dynasty</span>。</p>
+            <ul>
+              <li>东 east → eastern；南 south → southern；西 west → western；北 north → northern</li>
+            </ul>
+            <p><strong>(4)</strong> 如何翻译复合方位词，东南或者西北？先翻译后面再翻译前面。东南 <span class="highlight">southeast</span>；西北 <span class="highlight">northwest</span>。</p>
+            <p><strong>(5)</strong> 如何翻译公元前或者公元多少年？用 <span class="highlight">in + 年份</span>。</p>
+            <ul>
+              <li>公元前表达为 <span class="highlight">BC</span>，放在数字后面表示具体某一年，不要打逗号，只有表示数量才打逗号。</li>
+              <li>公元表达为 <span class="highlight">AD</span>，其实无需翻译，直接 in + 年份即可。</li>
+            </ul>
+            <p><strong>(6)</strong> 中国传统节日如何翻译？<span class="highlight">the + 首字母大写</span>。</p>
+            <ul>
+              <li>比较简单的，必须写英文原有表达。</li>
+              <li>较难的，除英文原有表达之外（上策），可以用中文拼音（下策）。中文拼音首字母大写一次，中间无空格。</li>
+            </ul>
+            <p><strong>(7)</strong> 如何翻译过去时间？使用 in 加时间。高级表达为在 in 前加副词 <span class="highlight">back</span>。</p>
+          </div>
+
+          <h3>例句</h3>
+          <div class="example-box">
+            <div class="cn">唐朝</div>
+            <div class="en">the Tang Dynasty</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">宋朝</div>
+            <div class="en">the Song Dynasty</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">元朝</div>
+            <div class="en">the Yuan Dynasty</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">唐宋时期</div>
+            <div class="en">the Tang and Song Dynasties</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">春秋时期</div>
+            <div class="en">the Spring and Autumn Period</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">北/南宋时期</div>
+            <div class="en">the Northern / Southern Song Dynasty</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">西周</div>
+            <div class="en">the Western Zhou Dynasty</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">公元前3000年</div>
+            <div class="en">in 3000 BC</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">公元2009年</div>
+            <div class="en">in 2009 AD</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">春节</div>
+            <div class="en">the Spring Festival</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">元宵节</div>
+            <div class="en">the Lantern Festival / the Yuanxiao Festival</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">端午节</div>
+            <div class="en">the Dragon Boat Festival / the Duanwu Festival</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">2010年</div>
+            <div class="en">in 2010</div>
+          </div>
+          <div class="example-box">
+            <div class="cn">过去时间 — 2007年 / 唐朝（高级表达）</div>
+            <div class="en">back in 2007 / back in the Tang Dynasty</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. 翻译常考词汇 -->
+      <div class="note-card" id="s19">
+        <div class="note-card-header">
+          <div class="note-card-number">19</div>
+          <div class="note-card-title vocab-heading">翻译常考词汇</div>
+        </div>
+        <div class="note-content">
+          <span class="sub-type">一、历史文化类</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">源于</span><span class="vocab-en">be originated from / in; derive from(无被动形式)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">社会地位</span><span class="vocab-en">social status</span></div>
+            <div class="vocab-item"><span class="vocab-cn">为了纪念……</span><span class="vocab-en">in memory of sb(置于句首), commemorate(动词)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">以……命名</span><span class="vocab-en">be named after</span></div>
+            <div class="vocab-item"><span class="vocab-cn">构成</span><span class="vocab-en">constitute; make up; consist of（这三个词都主动形式，无被动）</span></div>
+            <div class="vocab-item"><span class="vocab-cn">必不可少的</span><span class="vocab-en">essential, indispensable, fundamental</span></div>
+            <div class="vocab-item"><span class="vocab-cn">古代</span><span class="vocab-en">(in) ancient times</span></div>
+            <div class="vocab-item"><span class="vocab-cn">随着时间的推移</span><span class="vocab-en">as time goes by</span></div>
+            <div class="vocab-item"><span class="vocab-cn">悠久的历史</span><span class="vocab-en">with a long history, have a long history</span></div>
+            <div class="vocab-item"><span class="vocab-cn">深远的影响</span><span class="vocab-en">profound / significant influence / impact</span></div>
+            <div class="vocab-item"><span class="vocab-cn">大量</span><span class="vocab-en">a large number of; a multitude of; a great many</span></div>
+            <div class="vocab-item"><span class="vocab-cn">影响</span><span class="vocab-en">affect; impact; influence</span></div>
+            <div class="vocab-item"><span class="vocab-cn">……的象征</span><span class="vocab-en">the symbol of</span></div>
+            <div class="vocab-item"><span class="vocab-cn">追溯到</span><span class="vocab-en">date back to, trace back to</span></div>
+            <div class="vocab-item"><span class="vocab-cn">兴盛于</span><span class="vocab-en">prosper in (时间/地点)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">……的基石</span><span class="vocab-en">the cornerstone of</span></div>
+            <div class="vocab-item"><span class="vocab-cn">据记载</span><span class="vocab-en">according to historical records</span></div>
+            <div class="vocab-item"><span class="vocab-cn">文化交流</span><span class="vocab-en">cultural exchange</span></div>
+            <div class="vocab-item"><span class="vocab-cn">各地差异很大</span><span class="vocab-en">vary from region to region (place to place)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">风俗习惯</span><span class="vocab-en">customs</span></div>
+            <div class="vocab-item"><span class="vocab-cn">传统节日</span><span class="vocab-en">traditional festivals</span></div>
+            <div class="vocab-item"><span class="vocab-cn">传统手工艺</span><span class="vocab-en">traditional handicrafts</span></div>
+            <div class="vocab-item"><span class="vocab-cn">民间艺术</span><span class="vocab-en">folk art</span></div>
+            <div class="vocab-item"><span class="vocab-cn">色彩丰富</span><span class="vocab-en">rich colors</span></div>
+            <div class="vocab-item"><span class="vocab-cn">风格独特</span><span class="vocab-en">unique style</span></div>
+            <div class="vocab-item"><span class="vocab-cn">享誉全球</span><span class="vocab-en">be very famous throughout the world</span></div>
+            <div class="vocab-item"><span class="vocab-cn">笔墨纸砚</span><span class="vocab-en">writing brush, ink stick, paper, and ink stone</span></div>
+            <div class="vocab-item"><span class="vocab-cn">封建社会</span><span class="vocab-en">feudal society</span></div>
+            <div class="vocab-item"><span class="vocab-cn">皇帝</span><span class="vocab-en">emperor</span></div>
+            <div class="vocab-item"><span class="vocab-cn">宗教信仰</span><span class="vocab-en">religious beliefs</span></div>
+            <div class="vocab-item"><span class="vocab-cn">思想学派</span><span class="vocab-en">school of thought</span></div>
+            <div class="vocab-item"><span class="vocab-cn">思想核心</span><span class="vocab-en">the core of the ideology</span></div>
+            <div class="vocab-item"><span class="vocab-cn">代表人物</span><span class="vocab-en">representative</span></div>
+            <div class="vocab-item"><span class="vocab-cn">文学作品</span><span class="vocab-en">literary works</span></div>
+            <div class="vocab-item"><span class="vocab-cn">儒家思想</span><span class="vocab-en">Confucianism</span></div>
+            <div class="vocab-item"><span class="vocab-cn">儒家文化</span><span class="vocab-en">Confucian culture</span></div>
+            <div class="vocab-item"><span class="vocab-cn">道家</span><span class="vocab-en">Taoism</span></div>
+            <div class="vocab-item"><span class="vocab-cn">法家</span><span class="vocab-en">Legalism</span></div>
+            <div class="vocab-item"><span class="vocab-cn">传统美德</span><span class="vocab-en">traditional virtues</span></div>
+            <div class="vocab-item"><span class="vocab-cn">尊敬老人</span><span class="vocab-en">respect the elderly</span></div>
+            <div class="vocab-item"><span class="vocab-cn">尊老爱幼</span><span class="vocab-en">respect the old and love the young</span></div>
+            <div class="vocab-item"><span class="vocab-cn">礼物馈赠</span><span class="vocab-en">give presents</span></div>
+            <div class="vocab-item"><span class="vocab-cn">脚踏实地</span><span class="vocab-en">be down-to-earth</span></div>
+            <div class="vocab-item"><span class="vocab-cn">道德</span><span class="vocab-en">morality</span></div>
+          </div>
+
+          <span class="sub-type">二、自然风光类</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">享有……的声誉</span><span class="vocab-en">enjoy a high reputation of...</span></div>
+            <div class="vocab-item"><span class="vocab-cn">蓬勃发展</span><span class="vocab-en">boom; flourish; thrive</span></div>
+            <div class="vocab-item"><span class="vocab-cn">被誉为</span><span class="vocab-en">be honored / crowned as</span></div>
+            <div class="vocab-item"><span class="vocab-cn">占据重要地位</span><span class="vocab-en">occupy a significant place; play a significant role</span></div>
+            <div class="vocab-item"><span class="vocab-cn">与……密不可分</span><span class="vocab-en">be closely associated with 或 be intertwined with</span></div>
+            <div class="vocab-item"><span class="vocab-cn">增进友谊</span><span class="vocab-en">enhance friendship</span></div>
+            <div class="vocab-item"><span class="vocab-cn">位于、坐落于</span><span class="vocab-en">be located in / at</span></div>
+            <div class="vocab-item"><span class="vocab-cn">雄伟壮观</span><span class="vocab-en">magnificent / glorious / spectacular</span></div>
+            <div class="vocab-item"><span class="vocab-cn">海拔</span><span class="vocab-en">above sea level</span></div>
+            <div class="vocab-item"><span class="vocab-cn">幅员辽阔</span><span class="vocab-en">have a vast territory</span></div>
+            <div class="vocab-item"><span class="vocab-cn">距离……公里</span><span class="vocab-en">kilometers away from...</span></div>
+            <div class="vocab-item"><span class="vocab-cn">水域面积</span><span class="vocab-en">water area</span></div>
+            <div class="vocab-item"><span class="vocab-cn">发源于</span><span class="vocab-en">originate in</span></div>
+            <div class="vocab-item"><span class="vocab-cn">发祥地</span><span class="vocab-en">birthplace</span></div>
+            <div class="vocab-item"><span class="vocab-cn">诞生地</span><span class="vocab-en">cradle</span></div>
+            <div class="vocab-item"><span class="vocab-cn">流经</span><span class="vocab-en">run through</span></div>
+            <div class="vocab-item"><span class="vocab-cn">注入</span><span class="vocab-en">empty into</span></div>
+            <div class="vocab-item"><span class="vocab-cn">古代文明</span><span class="vocab-en">ancient civilization</span></div>
+            <div class="vocab-item"><span class="vocab-cn">繁荣地区</span><span class="vocab-en">prosperous region</span></div>
+            <div class="vocab-item"><span class="vocab-cn">栖息地</span><span class="vocab-en">habitat</span></div>
+            <div class="vocab-item"><span class="vocab-cn">宏大</span><span class="vocab-en">splendid, grand</span></div>
+            <div class="vocab-item"><span class="vocab-cn">气候湿润/温暖/干燥/温和</span><span class="vocab-en">moist / warm / dry / mild climate</span></div>
+            <div class="vocab-item"><span class="vocab-cn">干旱</span><span class="vocab-en">drought</span></div>
+            <div class="vocab-item"><span class="vocab-cn">风景独特</span><span class="vocab-en">unique scenery</span></div>
+            <div class="vocab-item"><span class="vocab-cn">蜿蜒</span><span class="vocab-en">wind through</span></div>
+            <div class="vocab-item"><span class="vocab-cn">传奇神秘</span><span class="vocab-en">legendary and mystery</span></div>
+            <div class="vocab-item"><span class="vocab-cn">稀有的</span><span class="vocab-en">scarce, rare</span></div>
+            <div class="vocab-item"><span class="vocab-cn">自然景色</span><span class="vocab-en">natural beauty / scenery</span></div>
+            <div class="vocab-item"><span class="vocab-cn">丝绸之路</span><span class="vocab-en">the Silk Road</span></div>
+            <div class="vocab-item"><span class="vocab-cn">文化遗迹</span><span class="vocab-en">cultural heritage</span></div>
+            <div class="vocab-item"><span class="vocab-cn">文物古迹</span><span class="vocab-en">cultural relics and historic sites</span></div>
+            <div class="vocab-item"><span class="vocab-cn">保存最完好的</span><span class="vocab-en">best-preserved</span></div>
+            <div class="vocab-item"><span class="vocab-cn">濒危物种</span><span class="vocab-en">endangered species</span></div>
+            <div class="vocab-item"><span class="vocab-cn">景点</span><span class="vocab-en">scenic site</span></div>
+            <div class="vocab-item"><span class="vocab-cn">旅游景点/目的地</span><span class="vocab-en">tourist spots; tourist destination</span></div>
+            <div class="vocab-item"><span class="vocab-cn">度假</span><span class="vocab-en">take a vacation</span></div>
+            <div class="vocab-item"><span class="vocab-cn">开阔视野</span><span class="vocab-en">broaden one's horizon</span></div>
+            <div class="vocab-item"><span class="vocab-cn">翻山越岭</span><span class="vocab-en">climb mountains and hills</span></div>
+          </div>
+
+          <span class="sub-type">三、饮食文化&amp;传统佳节</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">探亲访友</span><span class="vocab-en">pay a visit to relatives and friends</span></div>
+            <div class="vocab-item"><span class="vocab-cn">扫尘</span><span class="vocab-en">sweep the dust</span></div>
+            <div class="vocab-item"><span class="vocab-cn">买年货</span><span class="vocab-en">buy necessity for Spring Festival</span></div>
+            <div class="vocab-item"><span class="vocab-cn">欢度</span><span class="vocab-en">celebrate... / the celebration of</span></div>
+            <div class="vocab-item"><span class="vocab-cn">驱除厄运</span><span class="vocab-en">get rid of bad luck</span></div>
+            <div class="vocab-item"><span class="vocab-cn">年夜饭</span><span class="vocab-en">the dinner on New Year's Eve</span></div>
+            <div class="vocab-item"><span class="vocab-cn">团圆饭</span><span class="vocab-en">family reunion dinner</span></div>
+            <div class="vocab-item"><span class="vocab-cn">团聚</span><span class="vocab-en">family reunion</span></div>
+            <div class="vocab-item"><span class="vocab-cn">红包</span><span class="vocab-en">red envelope</span></div>
+            <div class="vocab-item"><span class="vocab-cn">发红包</span><span class="vocab-en">hand out red envelopes</span></div>
+            <div class="vocab-item"><span class="vocab-cn">美好祝福</span><span class="vocab-en">good wishes, blessings</span></div>
+            <div class="vocab-item"><span class="vocab-cn">中国菜</span><span class="vocab-en">Chinese cuisine / food</span></div>
+            <div class="vocab-item"><span class="vocab-cn">饮食文化</span><span class="vocab-en">food culture</span></div>
+            <div class="vocab-item"><span class="vocab-cn">色香味</span><span class="vocab-en">color, aroma, and taste</span></div>
+            <div class="vocab-item"><span class="vocab-cn">菜系</span><span class="vocab-en">cooking style</span></div>
+            <div class="vocab-item"><span class="vocab-cn">烹饪方法</span><span class="vocab-en">cooking technique</span></div>
+            <div class="vocab-item"><span class="vocab-cn">传统习俗</span><span class="vocab-en">traditional custom</span></div>
+            <div class="vocab-item"><span class="vocab-cn">象征</span><span class="vocab-en">symbolize / signify</span></div>
+            <div class="vocab-item"><span class="vocab-cn">团结</span><span class="vocab-en">unity</span></div>
+            <div class="vocab-item"><span class="vocab-cn">繁荣兴旺</span><span class="vocab-en">prosperity</span></div>
+            <div class="vocab-item"><span class="vocab-cn">仪式</span><span class="vocab-en">ritual</span></div>
+            <div class="vocab-item"><span class="vocab-cn">礼仪</span><span class="vocab-en">manners</span></div>
+            <div class="vocab-item"><span class="vocab-cn">优雅</span><span class="vocab-en">elegance / elegant</span></div>
+            <div class="vocab-item"><span class="vocab-cn">农历</span><span class="vocab-en">lunar calendar</span></div>
+            <div class="vocab-item"><span class="vocab-cn">灯谜</span><span class="vocab-en">lantern riddles</span></div>
+            <div class="vocab-item"><span class="vocab-cn">赏月</span><span class="vocab-en">enjoy the moon; 注意欣赏景色的赏，一般用 enjoy</span></div>
+          </div>
+
+          <span class="sub-type">四、社会发展</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">近年来</span><span class="vocab-en">in recent years; over the last few years</span></div>
+            <div class="vocab-item"><span class="vocab-cn">随着……的发展/提高</span><span class="vocab-en">with the development / improvement</span></div>
+            <div class="vocab-item"><span class="vocab-cn">出现</span><span class="vocab-en">emergence; rise; advent</span></div>
+            <div class="vocab-item"><span class="vocab-cn">显著地</span><span class="vocab-en">dramatically</span></div>
+            <div class="vocab-item"><span class="vocab-cn">极大地</span><span class="vocab-en">greatly; significantly; tremendously; dramatically</span></div>
+            <div class="vocab-item"><span class="vocab-cn">稳步（地）</span><span class="vocab-en">steadily; stably</span></div>
+            <div class="vocab-item"><span class="vocab-cn">增长</span><span class="vocab-en">increase; rise; grow</span></div>
+            <div class="vocab-item"><span class="vocab-cn">调查显示</span><span class="vocab-en">according to surveys; surveys show that</span></div>
+            <div class="vocab-item"><span class="vocab-cn">商品</span><span class="vocab-en">commodity</span></div>
+            <div class="vocab-item"><span class="vocab-cn">付款</span><span class="vocab-en">make a payment; pay a bill</span></div>
+            <div class="vocab-item"><span class="vocab-cn">成本/费用/开支</span><span class="vocab-en">cost</span></div>
+            <div class="vocab-item"><span class="vocab-cn">增长率</span><span class="vocab-en">growth rate</span></div>
+            <div class="vocab-item"><span class="vocab-cn">可持续发展</span><span class="vocab-en">sustainable development</span></div>
+            <div class="vocab-item"><span class="vocab-cn">最发达地区</span><span class="vocab-en">the most developed regions</span></div>
+            <div class="vocab-item"><span class="vocab-cn">面积和人口</span><span class="vocab-en">size and population</span></div>
+            <div class="vocab-item"><span class="vocab-cn">聚集区</span><span class="vocab-en">gathering area</span></div>
+            <div class="vocab-item"><span class="vocab-cn">改革开放</span><span class="vocab-en">reform and opening up</span></div>
+            <div class="vocab-item"><span class="vocab-cn">主要经济区域</span><span class="vocab-en">leading regional economies</span></div>
+            <div class="vocab-item"><span class="vocab-cn">制造中心</span><span class="vocab-en">manufacturing centers</span></div>
+            <div class="vocab-item"><span class="vocab-cn">主要交通工具</span><span class="vocab-en">main means of transportation</span></div>
+            <div class="vocab-item"><span class="vocab-cn">具有……的优点</span><span class="vocab-en">have the advantages of ...</span></div>
+            <div class="vocab-item"><span class="vocab-cn">高铁</span><span class="vocab-en">high-speed train</span></div>
+            <div class="vocab-item"><span class="vocab-cn">地铁站</span><span class="vocab-en">subway station</span></div>
+            <div class="vocab-item"><span class="vocab-cn">公共交通</span><span class="vocab-en">public transport</span></div>
+            <div class="vocab-item"><span class="vocab-cn">见证</span><span class="vocab-en">witness</span></div>
+            <div class="vocab-item"><span class="vocab-cn">超过</span><span class="vocab-en">exceed</span></div>
+            <div class="vocab-item"><span class="vocab-cn">费用</span><span class="vocab-en">expense</span></div>
+            <div class="vocab-item"><span class="vocab-cn">基础设施</span><span class="vocab-en">infrastructure</span></div>
+            <div class="vocab-item"><span class="vocab-cn">生活水平</span><span class="vocab-en">living standard</span></div>
+            <div class="vocab-item"><span class="vocab-cn">平均收入</span><span class="vocab-en">average income</span></div>
+            <div class="vocab-item"><span class="vocab-cn">购买力</span><span class="vocab-en">purchasing power</span></div>
+            <div class="vocab-item"><span class="vocab-cn">网购</span><span class="vocab-en">online shopping</span></div>
+            <div class="vocab-item"><span class="vocab-cn">电商巨头</span><span class="vocab-en">e-commerce giants</span></div>
+            <div class="vocab-item"><span class="vocab-cn">打折</span><span class="vocab-en">give / offer a discount</span></div>
+            <div class="vocab-item"><span class="vocab-cn">用现金/信用卡付款</span><span class="vocab-en">pay by cash / credit card</span></div>
+            <div class="vocab-item"><span class="vocab-cn">快递</span><span class="vocab-en">express delivery</span></div>
+            <div class="vocab-item"><span class="vocab-cn">消费方式</span><span class="vocab-en">pattern of consumption</span></div>
+            <div class="vocab-item"><span class="vocab-cn">消除贫困</span><span class="vocab-en">alleviate poverty / poverty alleviation</span></div>
+            <div class="vocab-item"><span class="vocab-cn">跟团游</span><span class="vocab-en">package tour</span></div>
+            <div class="vocab-item"><span class="vocab-cn">自由行</span><span class="vocab-en">independent travel</span></div>
+            <div class="vocab-item"><span class="vocab-cn">社会保障</span><span class="vocab-en">social security</span></div>
+            <div class="vocab-item"><span class="vocab-cn">就业</span><span class="vocab-en">employment</span></div>
+            <div class="vocab-item"><span class="vocab-cn">外出务工人员</span><span class="vocab-en">migrant workers</span></div>
+            <div class="vocab-item"><span class="vocab-cn">理财</span><span class="vocab-en">Financial management, manage finance</span></div>
+          </div>
+
+          <span class="sub-type">五、科技教育</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">通信网络</span><span class="vocab-en">communication network</span></div>
+            <div class="vocab-item"><span class="vocab-cn">快速发展</span><span class="vocab-en">fast / rapid / rocketing development / growth</span></div>
+            <div class="vocab-item"><span class="vocab-cn">阅读方式</span><span class="vocab-en">way of reading; reading habit</span></div>
+            <div class="vocab-item"><span class="vocab-cn">因此</span><span class="vocab-en">as a result; consequently</span></div>
+            <div class="vocab-item"><span class="vocab-cn">移动支付</span><span class="vocab-en">mobile payment</span></div>
+            <div class="vocab-item"><span class="vocab-cn">手机购物</span><span class="vocab-en">mobile shopping; shopping on mobile phones</span></div>
+            <div class="vocab-item"><span class="vocab-cn">拓宽</span><span class="vocab-en">broaden; expand; enlarge</span></div>
+            <div class="vocab-item"><span class="vocab-cn">考研热</span><span class="vocab-en">post-graduate mania</span></div>
+            <div class="vocab-item"><span class="vocab-cn">竞争激烈</span><span class="vocab-en">fierce competition</span></div>
+            <div class="vocab-item"><span class="vocab-cn">考研</span><span class="vocab-en">take the entrance exams for postgraduate schools</span></div>
+            <div class="vocab-item"><span class="vocab-cn">必修课</span><span class="vocab-en">compulsory course</span></div>
+            <div class="vocab-item"><span class="vocab-cn">专业课</span><span class="vocab-en">specialized course</span></div>
+            <div class="vocab-item"><span class="vocab-cn">课外活动</span><span class="vocab-en">extracurricular activities</span></div>
+            <div class="vocab-item"><span class="vocab-cn">自我修养</span><span class="vocab-en">self-cultivation</span></div>
+            <div class="vocab-item"><span class="vocab-cn">改善设施</span><span class="vocab-en">improve facilities</span></div>
+            <div class="vocab-item"><span class="vocab-cn">专注于</span><span class="vocab-en">be devoted to</span></div>
+            <div class="vocab-item"><span class="vocab-cn">不遗余力</span><span class="vocab-en">spare no effort / do one's best</span></div>
+            <div class="vocab-item"><span class="vocab-cn">因材施教</span><span class="vocab-en">individualized quality education</span></div>
+            <div class="vocab-item"><span class="vocab-cn">过度依赖</span><span class="vocab-en">over-reliance / over-dependence on; rely too heavily on</span></div>
+            <div class="vocab-item"><span class="vocab-cn">人工智能</span><span class="vocab-en">artificial intelligence (AI)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">人脸识别</span><span class="vocab-en">facial recognition</span></div>
+            <div class="vocab-item"><span class="vocab-cn">高等教育</span><span class="vocab-en">higher education</span></div>
+            <div class="vocab-item"><span class="vocab-cn">网络课程</span><span class="vocab-en">online course</span></div>
+            <div class="vocab-item"><span class="vocab-cn">在线学习</span><span class="vocab-en">online learning</span></div>
+            <div class="vocab-item"><span class="vocab-cn">教育公平</span><span class="vocab-en">education equality</span></div>
+            <div class="vocab-item"><span class="vocab-cn">智能手机用户</span><span class="vocab-en">smartphone user</span></div>
+            <div class="vocab-item"><span class="vocab-cn">电子设备</span><span class="vocab-en">electronic device</span></div>
+            <div class="vocab-item"><span class="vocab-cn">对……上瘾</span><span class="vocab-en">be addicted to...</span></div>
+            <div class="vocab-item"><span class="vocab-cn">虚拟世界</span><span class="vocab-en">virtual world</span></div>
+            <div class="vocab-item"><span class="vocab-cn">新兴的</span><span class="vocab-en">emerging</span></div>
+            <div class="vocab-item"><span class="vocab-cn">网民</span><span class="vocab-en">netizen</span></div>
+            <div class="vocab-item"><span class="vocab-cn">发展潜力</span><span class="vocab-en">development / growth potential; potential to develop/grow</span></div>
+            <div class="vocab-item"><span class="vocab-cn">创新</span><span class="vocab-en">innovation</span></div>
+            <div class="vocab-item"><span class="vocab-cn">即时通讯</span><span class="vocab-en">instant communication</span></div>
+            <div class="vocab-item"><span class="vocab-cn">兼职</span><span class="vocab-en">part-time jobs</span></div>
+            <div class="vocab-item"><span class="vocab-cn">积累经验</span><span class="vocab-en">accumulate experience</span></div>
+          </div>
+
+          <span class="sub-type">六、医疗健康</span>
+          <div class="vocab-grid">
+            <div class="vocab-item"><span class="vocab-cn">导致</span><span class="vocab-en">cause; result in; lead to; give rise to</span></div>
+            <div class="vocab-item"><span class="vocab-cn">有助于</span><span class="vocab-en">help (to)</span></div>
+            <div class="vocab-item"><span class="vocab-cn">治愈</span><span class="vocab-en">cure / heal</span></div>
+            <div class="vocab-item"><span class="vocab-cn">交通拥堵</span><span class="vocab-en">traffic congestion</span></div>
+            <div class="vocab-item"><span class="vocab-cn">节能环保</span><span class="vocab-en">energy saving and environmental protection</span></div>
+            <div class="vocab-item"><span class="vocab-cn">社交</span><span class="vocab-en">socializing; social interactions</span></div>
+            <div class="vocab-item"><span class="vocab-cn">医保</span><span class="vocab-en">medical insurance</span></div>
+            <div class="vocab-item"><span class="vocab-cn">aerobics</span><span class="vocab-en">有氧运动</span></div>
+            <div class="vocab-item"><span class="vocab-cn">lose weight</span><span class="vocab-en">减肥</span></div>
+            <div class="vocab-item"><span class="vocab-cn">physical exercise</span><span class="vocab-en">锻炼</span></div>
+            <div class="vocab-item"><span class="vocab-cn">on diet</span><span class="vocab-en">节食</span></div>
+            <div class="vocab-item"><span class="vocab-cn">operation</span><span class="vocab-en">手术</span></div>
+            <div class="vocab-item"><span class="vocab-cn">Physical inspection</span><span class="vocab-en">体检</span></div>
+            <div class="vocab-item"><span class="vocab-cn">Medical staff</span><span class="vocab-en">医护人员</span></div>
+            <div class="vocab-item"><span class="vocab-cn">symptom</span><span class="vocab-en">症状</span></div>
+            <div class="vocab-item"><span class="vocab-cn">herbal medicine</span><span class="vocab-en">草药</span></div>
+            <div class="vocab-item"><span class="vocab-cn">Traditional Chinese Medicine</span><span class="vocab-en">中医（简写是 TCM）</span></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="footer">
+      <p>英语六级 · 翻译知识点 — 用心整理，祝考试顺利 🎯</p>
+    </footer>
+  </div>
+
+</div>
+
+<script>
+  // Sidebar active highlight
+  const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        sidebarLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -50% 0px' });
+  document.querySelectorAll('.note-card').forEach(el => observer.observe(el));
+
+  // Mobile sidebar toggle
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  }
+  function closeMobile() {
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+  }
+</script>
+
+</body>
+</html>
